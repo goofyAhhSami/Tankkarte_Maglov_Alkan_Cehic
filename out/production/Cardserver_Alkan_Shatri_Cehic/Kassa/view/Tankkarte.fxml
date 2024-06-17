@@ -7,51 +7,62 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="414.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kassa.control.TankkarteController">
+<AnchorPane prefHeight="538.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kassa.control.TankkarteController">
    <children>
-      <TextField fx:id="txf_kNummer" layoutX="139.0" layoutY="97.0" promptText="1" />
-      <Label layoutX="14.0" layoutY="102.0" text="Kundennummer">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txf_Anzahl" layoutX="254.0" layoutY="140.0" promptText="2" />
-      <Label layoutX="14.0" layoutY="145.0" text="Benötigte Anzahl an Tankkarten">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="189.0" text="Berechtigtes Produkt">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txf_Produkt" layoutX="176.0" layoutY="184.0" promptText="Diesel" />
-      <Label layoutX="14.0" layoutY="240.0" text="Gültigkeit der Karte">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Slider fx:id="s_gueltigkeit" blockIncrement="1.0" layoutX="165.0" layoutY="242.0" max="24.0" prefHeight="21.0" prefWidth="276.0" showTickLabels="true" showTickMarks="true" />
-      <Label layoutX="511.0" layoutY="240.0" text="Monate" />
-      <Label layoutX="14.0" layoutY="298.0" text="Limit der Karte">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Slider fx:id="s_limit" blockIncrement="0.0" layoutX="132.0" layoutY="297.0" max="1000.0" min="350.0" prefHeight="45.0" prefWidth="369.0" showTickLabels="true" showTickMarks="true" />
-      <Label layoutX="559.0" layoutY="298.0" text="€" />
-      <TextField fx:id="txf_anzahlMonate" alignment="CENTER" layoutX="478.0" layoutY="235.0" prefHeight="31.0" prefWidth="32.0" promptText="8" />
-      <TextField fx:id="txf_anzahlLimit" alignment="CENTER" layoutX="515.0" layoutY="293.0" prefHeight="31.0" prefWidth="44.0" promptText="550" />
+      <TextField fx:id="txf_kNummer" layoutX="148.0" layoutY="96.0" promptText="1" />
       <Label layoutX="23.0" layoutY="14.0" text="Anlegen der Tankkarte" textFill="#a9a9ab" wrapText="true">
          <font>
             <Font name="Consolas" size="48.0" />
          </font>
       </Label>
-      <Button layoutX="16.0" layoutY="359.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="546.0" text="Tankkarte(n) anlegen" textFill="#a9a9ab">
+      <Label layoutX="23.0" layoutY="101.0" text="Kundennummer">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txf_Anzahl" layoutX="264.0" layoutY="185.0" promptText="2" />
+      <Label layoutX="24.0" layoutY="190.0" text="Benötigte Anzahl an Tankkarten">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="234.0" text="Berechtigtes Produkt">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txf_Produkt" layoutX="186.0" layoutY="229.0" promptText="Diesel" />
+      <Label layoutX="24.0" layoutY="285.0" text="Gültigkeit der Karte">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Slider fx:id="s_gueltigkeit" blockIncrement="1.0" layoutX="175.0" layoutY="287.0" max="24.0" prefHeight="21.0" prefWidth="276.0" showTickLabels="true" showTickMarks="true" />
+      <Label layoutX="521.0" layoutY="285.0" text="Monate" />
+      <Label layoutX="24.0" layoutY="343.0" text="Limit der Karte">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Slider fx:id="s_limit" blockIncrement="0.0" layoutX="142.0" layoutY="342.0" max="1000.0" min="350.0" prefHeight="45.0" prefWidth="369.0" showTickLabels="true" showTickMarks="true" />
+      <Label layoutX="569.0" layoutY="343.0" text="€" />
+      <TextField fx:id="txf_anzahlMonate" alignment="CENTER" layoutX="488.0" layoutY="280.0" prefHeight="31.0" prefWidth="32.0" promptText="8" />
+      <TextField fx:id="txf_anzahlLimit" alignment="CENTER" layoutX="525.0" layoutY="338.0" prefHeight="31.0" prefWidth="44.0" promptText="550" />
+      <Button layoutX="26.0" layoutY="404.0" mnemonicParsing="false" onAction="#createTankkarte" prefHeight="31.0" prefWidth="546.0" text="Tankkarte(n) anlegen" textFill="#a9a9ab">
          <font>
             <Font name="Consolas Bold" size="18.0" />
          </font>
       </Button>
+      <Button layoutX="26.0" layoutY="454.0" mnemonicParsing="false" onAction="#openKassa" prefHeight="31.0" prefWidth="546.0" text="Zur Kassa gehen" textFill="#a9a9ab">
+         <font>
+            <Font name="Consolas Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="23.0" layoutY="147.0" text="Ausgestellt auf ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txf_tfAusgestellt" layoutX="164.0" layoutY="145.0" promptText="Fahrer1234" />
    </children>
 </AnchorPane>

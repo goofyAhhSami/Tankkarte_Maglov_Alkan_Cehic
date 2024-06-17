@@ -1,5 +1,6 @@
 package Main;
 
+import Kassa.control.KassenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,11 +12,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Kassa/view/Kassa.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Kassa/view/Tankkarte.fxml"));
         Parent root = loader.load();
-        //  Letter_Adventure_File_Control controller = loader.getController();
-        //controller.setMenuStage(primaryStage); // Initialisiere menuStage
-        primaryStage.setScene(new Scene(root, 882, 702));
+        primaryStage.setScene(new Scene(root, 600, 470));
         primaryStage.show();
     }
 
