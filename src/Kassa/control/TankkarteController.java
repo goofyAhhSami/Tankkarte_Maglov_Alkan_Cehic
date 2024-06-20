@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 
 public class TankkarteController implements Initializable {
 
+
+
     @FXML
     private TextField txf_kNummer, txf_Anzahl, txf_Produkt, txf_anzahlMonate, txf_anzahlLimit, txf_tfAusgestellt;
 
@@ -32,6 +34,8 @@ public class TankkarteController implements Initializable {
     private Slider s_limit;
 
     private TankkarteModel tm = new TankkarteModel();
+
+    String pan;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,16 +66,19 @@ public class TankkarteController implements Initializable {
         String kNr = String.valueOf(Integer.parseInt(txf_kNummer.getText()));
         String kartenlimit = txf_anzahlLimit.getText();
 
-        String pan = generatePAN();
+        pan = generatePAN(kNr);
 
         System.out.println(ausgestelltAuf + gueltigBis + kNr + kartenlimit + pan);
 
         tm.insertIntoTankkarte(pan, ausgestelltAuf, gueltigBis, kNr, true, kartenlimit);
     }
 
+    private String generatePAN(String knr) throws SQLException {
+        return  tm.getNextPANNumber(knr);
 
-    private String generatePAN() throws SQLException {
-        int nextNumber = tm.getNextPANNumber();
-        return String.format("Fahrer%04d", nextNumber);
+    }
+
+    public String getPan() {
+        return pan;
     }
 }

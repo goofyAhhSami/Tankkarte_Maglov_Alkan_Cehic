@@ -1,5 +1,6 @@
 package Kassa.control;
 
+import Kassa.model.KassaModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,17 +15,19 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Random;
 
 public class KassenController {
 
     private static final double DIESEL_PREIS_PRO_LITER = 1.60;
-    private double gesamterBetrag = 0.0;
-    private double gesamtPreis = 0.0;
+    private double gesamterBetrag;
+    private double gesamtPreis;
     private static final String produkt = "Diesel";
 
+    double mengeInLitern;
+
+    ZahlenTankkarteController zc = new ZahlenTankkarteController();
 
 
     @FXML
@@ -92,21 +95,21 @@ public class KassenController {
     }
 
     @FXML
-    public void zahlen() throws IOException {
+    public void zahlen() throws IOException, SQLException {
+        TankkarteController tC = new TankkarteController();
         Stage stage2 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Kassa/view/Zahlung.fxml"));
         Parent root = loader.load();
-        //  Letter_Adventure_File_Control controller = loader.getController();
-        //controller.setMenuStage(primaryStage); // Initialisiere menuStage
         stage2.setScene(new Scene(root, 354, 112));
         stage2.show();
+        insertTankung(tC.getPan());
     }
 
     @FXML
     public void generateFueling() {
         Random random = new Random();
         // Zufällige Menge zwischen 5 und 100 Litern generieren
-        double mengeInLitern = 5 + (95 * random.nextDouble()); // 5 + (0 bis 95) ergibt 5 bis 100
+         mengeInLitern = 5 + (95 * random.nextDouble()); // 5 + (0 bis 95) ergibt 5 bis 100
         // Gesamtpreis berechnen
         gesamtPreis = mengeInLitern * DIESEL_PREIS_PRO_LITER;
 
@@ -122,5 +125,22 @@ public class KassenController {
 
     }
 
+    public void insertTankung(String pan) throws SQLException {
+        zc.tankkarteBestaetigen();
+        zc.setPan(pan);
 
+    }
+
+
+    public double getGesamterBetrag() {
+        return gesamterBetrag;
+    }
+
+    public double getGesamtPreis() {
+        return gesamtPreis;
+    }
+
+    public double getMengeInLitern() {
+        return mengeInLitern;
+    }
 }

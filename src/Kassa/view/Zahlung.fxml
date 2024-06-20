@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="112.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kassa.control.ZahlungsController">
    <children>
       <Label layoutX="77.0" layoutY="14.0" text="Wie möchten Sie bezahlen?" />
